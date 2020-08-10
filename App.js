@@ -1,6 +1,9 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
+import { PostDetailedView } from "./PostDetailedView";
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 import {
   View,
   Text,
@@ -34,7 +37,10 @@ export class App extends React.Component {
   renderItem = ({item}) => {
     return (
       <View>
-        <TouchableOpacity style={styles.MainContainer}>
+        <TouchableOpacity style={styles.MainContainer}
+       onPress={() => {
+        alert('You tapped the button!');
+      }}>
             <View style={styles.txtColumn}>
               <Text
                 style={{
@@ -49,7 +55,29 @@ export class App extends React.Component {
         </TouchableOpacity>
       </View>
     );
+
+  //   const stack = createStackNavigator({
+  //     Home:{
+  //         screen: HomeScreen
+  //     },
+  //     PostDetailedView:{
+  //         screen: detailedView
+  //     }
+  // });
+
+// const Stack = createStackNavigator();
+
+// function MyStack() {
+//   return (
+//     <Stack.Navigator>
+//       <Stack.Screen name="Home" component={HomeScreen} />
+//       <Stack.Screen name="detailedView" component={detailedScreen} />
+//     </Stack.Navigator>
+//   );
+// }
+
   };
+  
 
   render() {
     let {posts} = this.state;
