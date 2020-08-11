@@ -43,7 +43,7 @@ export class App extends React.Component {
       });
 }
   renderItem = ({item}) => {
-    function HomeScreen({ navigation }) {
+   // function HomeScreen({ navigation }) {
     return (
       <View>
         <TouchableOpacity style={styles.MainContainer}
@@ -58,7 +58,13 @@ export class App extends React.Component {
                 {item.title}
               </Text>
               <Text style={{fontSize: 15}}>{item.body} </Text>
+              <Text></Text>
             </View>
+            <View
+              style={{
+              borderBottomColor: 'black',
+              borderBottomWidth: 2,
+              }}/>
         </TouchableOpacity>
       </View>
     );
@@ -82,8 +88,9 @@ export class App extends React.Component {
 //     </Stack.Navigator>
 //   );
 // }
-              }
-              return (
+           //  }
+              
+                return (
                 <NavigationContainer>
                   <Stack.Navigator initialRouteName="Home">
                     <Stack.Screen name="Home" component={HomeScreen} />
@@ -91,25 +98,36 @@ export class App extends React.Component {
                   </Stack.Navigator>
                 </NavigationContainer>
               );
+            
 
-              function DetailsScreen() {
-                return (
-                  <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-                    <Text>Details Screen</Text>
-                  </View>
-                );
-              }
+    function DetailsScreen() {
+      return (
+        // <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+        //   <Text>Details Screen</Text>
+
+        // </View>
+        <View style={styles.txtColumn}>
+          <Text
+            style={{
+              paddingBottom: '4%',
+              fontSize: 21,
+              fontWeight: 'bold',
+            }}>
+            {item.title}
+          </Text>
+          <Text style={{ fontSize: 15 }}>{item.body} </Text>
+        </View>
+
+      );
+    }
   };
-
-  
-  
 
   render() {
     let {posts} = this.state;
     return (
       <ScrollView>
         <View>
-          <Text style={styles.name}>Hatch Blog</Text>
+        <Text style={styles.name}>Hatch Blog</Text>
           <FlatList
             data={posts}
             renderItem={this.renderItem}
@@ -117,11 +135,10 @@ export class App extends React.Component {
           />
         </View>
       </ScrollView>
+      
     );
   }
 }
-
-
 
 const styles = StyleSheet.create({
   MainContainer: {

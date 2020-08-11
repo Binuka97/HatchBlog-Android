@@ -1,16 +1,42 @@
-// /* eslint-disable prettier/prettier */
-// /* eslint-disable react-native/no-inline-styles */
-// import React from 'react';
-// import { createStackNavigator } from '@react-navigation/stack';
-// import { NavigationContainer } from '@react-navigation/native';
-// import {
-//   View,
-//   Text,
-//   ScrollView,
-//   StyleSheet,
-//   TouchableOpacity,
-//   FlatList,
-// } from 'react-native';
+import React from 'react';
+import { StyleSheet, View, Text, Button } from 'react-native';
 
+/**
+ * Profile screen
+ */
+export default class Profile extends React.Component {
 
+    static navigationOptions = ({ navigation }) => {
+        return {
+            title: navigation.getParam('name'),
+        };
+    };
 
+    render() {
+
+        const { navigate, state } = this.props.navigation;
+
+        return (
+            <View style={styles.container}>
+
+                <Text>Hello {state.params.name}</Text>
+
+                <Button
+                    title="Go to home screen"
+                    onPress={() => navigate('Home')}
+                />
+
+            </View>
+        );
+
+    }
+
+}
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center'
+    }
+});
