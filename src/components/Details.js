@@ -21,15 +21,15 @@ export default class Details extends React.Component {
   // componentDidMount(){
   //   // alert(this.state.itemId)
   // }
-  
+
   render() {
     return (
       <View style={styles.txtColumn}>
 
-        <Text style={{ paddingBottom: '4%', fontSize: 21, fontWeight: 'bold', }}>
+        <Text style={{ paddingBottom: '4%', fontSize: 23, fontWeight: 'bold', }}>
           {this.state.blog.title}</Text>
 
-        <Text style={{ fontSize: 15 }}>{this.state.blog.body}</Text>
+        <Text style={{ fontSize: 18 }}>{this.state.blog.body}</Text>
       </View>
     );
   }
