@@ -13,6 +13,14 @@ import {
   FlatList,
 } from 'react-native';
 
+const screens = {
+  postDetails: {
+    screen: PostDetailedView
+  }
+}
+
+const Stack = createStackNavigator();
+
 export class App extends React.Component {
   constructor(props) {
     super(props);
@@ -35,12 +43,11 @@ export class App extends React.Component {
       });
 }
   renderItem = ({item}) => {
+    function HomeScreen({ navigation }) {
     return (
       <View>
         <TouchableOpacity style={styles.MainContainer}
-       onPress={() => {
-        alert('You tapped the button!');
-      }}>
+       onPress={() => navigation.navigate('Details')}>
             <View style={styles.txtColumn}>
               <Text
                 style={{
@@ -75,8 +82,26 @@ export class App extends React.Component {
 //     </Stack.Navigator>
 //   );
 // }
+              }
+              return (
+                <NavigationContainer>
+                  <Stack.Navigator initialRouteName="Home">
+                    <Stack.Screen name="Home" component={HomeScreen} />
+                    <Stack.Screen name="Details" component={DetailsScreen} />
+                  </Stack.Navigator>
+                </NavigationContainer>
+              );
 
+              function DetailsScreen() {
+                return (
+                  <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+                    <Text>Details Screen</Text>
+                  </View>
+                );
+              }
   };
+
+  
   
 
   render() {
@@ -95,6 +120,8 @@ export class App extends React.Component {
     );
   }
 }
+
+
 
 const styles = StyleSheet.create({
   MainContainer: {
